@@ -88,15 +88,15 @@ else
 	printf "\nList of jobs using or waiting for GPU usage\n"
 	printf "\nGPU:# JobID    User   Status  Partition\n"
 	squeue -o "%b %A %u %t       %P" | grep gpu
-	printf "\nFor each job, # in the first column is for number of GPU running (R) or pending (PD)\n"
-	nbrun=$(squeue -o "%b %A %t" | grep gpu | grep R | cut -d':' -f2 | cut -d' ' -f1 | paste -sd+ | bc)
-	nbpdi=$(squeue -o "%b %A %t" | grep gpu | grep PD | cut -d':' -f2 | cut -d' ' -f1 | paste -sd+ | bc)
-	
-	if [[ -z "${nbpdi}" ]]
-		then nbpdi="0"
-	fi
-	printf "\nTotal number of GPU running: ${nbrun}"
-	printf "\nTotal number of GPU waiting: ${nbpdi}\n\n"
+	#printf "\nFor each job, # in the first column is for number of GPU running (R) or pending (PD)\n"
+	#nbrun=$(squeue -o "%b %A %t" | grep gpu | grep R | cut -d':' -f2 | cut -d' ' -f1 | paste -sd+ | bc)
+	#nbpdi=$(squeue -o "%b %A %t" | grep gpu | grep PD | cut -d':' -f2 | cut -d' ' -f1 | paste -sd+ | bc)
+
+	#if [[ -z "${nbpdi}" ]]
+	#	then nbpdi="0"
+	#fi
+	#printf "\nTotal number of GPU running: ${nbrun}"
+	#printf "\nTotal number of GPU waiting: ${nbpdi}\n\n"
 fi
 }
 
@@ -135,6 +135,7 @@ function s {
     mem_report
     cpu_report
     gpu_usage
+    echo
     dfh
     echo
 }
