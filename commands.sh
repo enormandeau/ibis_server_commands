@@ -8,9 +8,18 @@ if [[ "$SERVER" == "katak" ]]
 then
     MAX_CPU=60
     MAX_RAM=1000
-else
+fi
+
+if [[ "$SERVER" == "manitou" ]]
+then
     MAX_CPU=128
     MAX_RAM=2000
+fi
+
+if [[ "$SERVER" == "thoth" ]]
+then
+    MAX_CPU=288
+    MAX_RAM=5000
 fi
 
 # Help on these useful commands
