@@ -18,7 +18,7 @@ fi
 
 if [[ "$SERVER" == "thoth" ]]
 then
-    MAX_CPU=288
+    MAX_CPU=280
     MAX_RAM=5000
 fi
 
@@ -121,7 +121,7 @@ function dfh {
 
 ## Nicer squeue output format
 function sq {
-    squeue -o "%.8i %.9P %.20j %.4C %.8u %.2t %.11M %.11l %.5D %.20R %.10m" |
+    squeue -o "%.8i %.9P %.13j %.4C %.8u %.2t %.10M %.10l %.5D %.20R %.6m" |
     grep -E "^|$USER"
 }
 
