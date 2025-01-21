@@ -64,9 +64,9 @@ alias shelp='useful_ibis_commands'
 alias h='useful_ibis_commands'
 
 # Functions to report CPU, memory and GPU usage
-## CPU
+# CPU
 function cpu_sum {
-    echo $(sq | awk '$6 == "R" {print $4}')
+    echo $(sq | grep -vP '_\[|jupyter' | awk '$6 == "R" {print $4}')
 }
 
 function cpu_report {
@@ -121,7 +121,7 @@ function dfh {
 
 ## Nicer squeue output format
 function sq {
-    squeue -o "%.8i %.9P %.13j %.4C %.8u %.2t %.10M %.10l %.5D %.20R %.6m" |
+    squeue -o "%.10i %.9P %.12j %.3C %.8u %.2t %.11M %.11l %.3D %.19R %.7m" |
     grep -E "^|$USER"
 }
 
