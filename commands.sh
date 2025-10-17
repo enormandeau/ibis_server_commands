@@ -13,13 +13,13 @@ fi
 if [[ "$SERVER" == "manitou" ]]
 then
     MAX_CPU=128
-    MAX_RAM=2000
+    MAX_RAM=1900
 fi
 
 if [[ "$SERVER" == "thoth" ]]
 then
     MAX_CPU=280
-    MAX_RAM=5000
+    MAX_RAM=4300
 fi
 
 # Help on these useful commands
@@ -75,7 +75,7 @@ function cpu_report {
 
 ## Memory
 function mem_sum {
-    echo $(sq | awk '$6 == "R" {print $11}' | perl -pe 's/G/000/; s/M//' | awk '{s+=$1}END{print s}') / 1000 |
+    echo $(sq | awk '$6 == "R" {print $11}' | perl -pe 's/\.\d+//; s/G/000/; s/M//' | awk '{s+=$1}END{print s}') / 1000 |
         bc |
         cut -c -7
 }
